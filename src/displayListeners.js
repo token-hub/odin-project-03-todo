@@ -1,19 +1,32 @@
-import dataPrepareUtil from "./dataPrepareUtil";
+import DataUtil from "./dataUtil";
+import Display from "./display";
 import { projectDB, todoDB } from "./database";
 
 class DisplayListeners {
     constructor() {
-        this.dataPrepareUtil = new dataPrepareUtil();
+        this.dataUtil = new DataUtil();
+        this.display = new Display();
     }
 
-    addListener({ selector, func, objectToBind, data }) {
+    addListener({ selector, func, objectToBind, collection }) {
         const element = document.querySelector(selector);
         if (element) {
+            const boundFunc = func.bind(objectToBind);
+
             // I am binding the Project/Todo object inside the index.js here
             // because the functionality will be coming from a different module
             // which is being imported too in the index.js
-            data = this.dataPrepareUtil.prepare(data);
-            element.addEventListener("click", func.bind(objectToBind, data));
+            element.addEventListener("click", () => {
+                let data;
+
+                if (collection === projectDB) {
+                    data = this.display.getProjectFormValue();
+                } else if (collection === todoDB) {
+                    data = this.display.getTodoFormValues();
+                }
+                data.id = this.dataUtil.generateId();
+                boundFunc(data);
+            });
         }
     }
 
@@ -23,7 +36,7 @@ class DisplayListeners {
         if (elements.length) {
             elements.forEach((elem) => {
                 const parent = elem.parentElement;
-                let data = this.dataPrepareUtil.getDataFromChildElements(parent, collection, isEdit);
+                let data = this.dataUtil.getDataFromChildElements(parent, collection, isEdit);
                 elem.addEventListener("click", func.bind(objectToBind, data));
             });
         }
