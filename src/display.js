@@ -41,7 +41,7 @@ class Display {
         };
     }
     displayProjects(data) {
-        const element = this.getElement("#project");
+        const element = this.getElement("#projects");
         if (element) {
             data.forEach((d) => {
                 const project = document.createElement("div");
