@@ -1,8 +1,8 @@
-import DisplayPrepareData from "./displayPrepareData";
+import dataPrepareUtil from "./dataPrepareUtil";
 
 class DisplayListeners {
     constructor() {
-        this.displayPrepareData = new DisplayPrepareData();
+        this.dataPrepareUtil = new dataPrepareUtil();
     }
 
     addListener({ selector, func, objectToBind, data }) {
@@ -10,7 +10,7 @@ class DisplayListeners {
         // I am binding the Project/Todo object inside the index.js here
         // because the functionality will be coming from a different module
         // which is being imported too in the index.js
-        data = this.displayPrepareData.prepare(data);
+        data = this.dataPrepareUtil.prepare(data);
         element.addEventListener("click", func.bind(objectToBind, data));
     }
 }
