@@ -18,18 +18,12 @@ class Main {
     }
 
     addEventListeners() {
-        const todoFormData = this.display.getTodoFormValues();
-        todoFormData.generateId = true;
-
-        const projectFormData = this.display.getProjectFormValue();
-        projectFormData.generateId = true;
-
         // todo submit button
         this.displayListeners.addListener({
             selector: "#add-todo-form-btn",
             func: this.db.todo.saveOne,
             objectToBind: this.db.todo,
-            data: todoFormData
+            collection: todoDB
         });
 
         // project todo submit button
@@ -37,7 +31,7 @@ class Main {
             selector: "#add-project-form-btn",
             func: this.db.project.saveOne,
             objectToBind: this.db.project,
-            data: projectFormData
+            collection: projectDB
         });
 
         // const todoEditBtns = this.display.getElements(".todo-edit-btn");
