@@ -21,8 +21,10 @@ class Database {
     fetchAll() {}
 }
 
-const projectLocalStorage = new Database(new LocalStorageManager("project"));
-const todoLocalStorage = new Database(new LocalStorageManager("todo"));
+const projectDB = "project";
+const todoDB = "todo";
+const projectLocalStorage = new Database(new LocalStorageManager(projectDB));
+const todoLocalStorage = new Database(new LocalStorageManager(todoDB));
 
 const db = {
     project: projectLocalStorage,
