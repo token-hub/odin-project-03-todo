@@ -50,7 +50,7 @@ class Display {
                 project.innerHTML = `
                     <p class='project-name'>${d.project}</p>
                     <button type="edit" class='project-edit-btn'>Edit</button>
-                    <button type="button" class'project-delete-btn'>Delete</button>
+                    <button type="button" class='project-delete-btn'>Delete</button>
                     `;
 
                 element.appendChild(project);
