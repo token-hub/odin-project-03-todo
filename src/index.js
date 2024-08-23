@@ -13,13 +13,15 @@ class Main {
 
     init() {
         this.addEventListeners();
+        this.fetchProjects();
+        this.fetchTodos();
     }
 
     addEventListeners() {
-        // todo
-
         const data = this.display.getFormValues();
         data.generateId = true;
+
+        // todo
         this.displayListeners.addListener({
             selector: "#add-todo-form-btn",
             func: this.db.todo.saveOne,
@@ -34,6 +36,15 @@ class Main {
             objectToBind: this.db.project,
             data: { hello: "hello from project" }
         });
+    }
+
+    fetchProjects() {
+        const projects = this.db.project.fetchAll();
+    }
+
+    fetchTodos() {
+        const todos = this.db.todo.fetchAll();
+        this.display.displayTodos(todos);
     }
 
     run() {
