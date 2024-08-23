@@ -22,7 +22,7 @@ class LocalStorageManager {
     }
 
     updateOne(data) {
-        // this.fetchAll();
+        this.fetchAll();
     }
     saveOne(data) {
         this.fetchAll();
@@ -30,7 +30,14 @@ class LocalStorageManager {
         newData.push(data);
         localStorage.setItem(this.collection, JSON.stringify(newData));
     }
-    deleteOne(data) {}
+    deleteOne(data) {
+        this.fetchAll();
+        const currentData = this.data;
+        const filteredData = currentData.filter((d) => {
+            return d.id !== data.id;
+        });
+        localStorage.setItem(this.collection, JSON.stringify(filteredData));
+    }
 }
 
 export default LocalStorageManager;
