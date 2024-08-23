@@ -47,6 +47,15 @@ class Main {
             collection: todoDB,
             isEdit: false
         });
+
+        // project delete buttons
+        this.displayListeners.addFormListeners({
+            selector: ".project-delete-btn",
+            func: this.db.project.deleteOne,
+            objectToBind: this.db.project,
+            collection: projectDB,
+            isEdit: false
+        });
     }
 
     fetchProjects() {
