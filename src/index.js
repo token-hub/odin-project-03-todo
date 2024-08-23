@@ -29,15 +29,10 @@ class Main {
         // project todo submit button
         this.displayListeners.addListener({
             selector: "#add-project-form-btn",
-            func: this.db.project.saveOne,
+            func: [this.db.project.saveOne, this.db.project.updateOne],
             objectToBind: this.db.project,
             collection: projectDB
         });
-
-        // const todoEditBtns = this.display.getElements(".todo-edit-btn");
-        // const todoDeleteBtns = this.display.getElements(".todo-delete-btn");
-        // const projectEditBtns = this.display.getElements(".project-edit-btn");
-        // const projectDeleteBtns = this.display.getElements(".project-delete-btn");
 
         // todo delete buttons
         this.displayListeners.addFormListeners({
@@ -55,6 +50,15 @@ class Main {
             objectToBind: this.db.project,
             collection: projectDB,
             isEdit: false
+        });
+
+        // project edit buttons
+        this.displayListeners.addFormListeners({
+            selector: ".project-edit-btn",
+            func: this.display.prepareEditForm,
+            objectToBind: this.display,
+            collection: projectDB,
+            isEdit: true
         });
     }
 

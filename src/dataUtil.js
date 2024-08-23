@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { projectDB, todoDB } from "./database";
 
 class DataUtil {
     generateId() {
@@ -13,14 +14,14 @@ class DataUtil {
         } else {
             if (collection === projectDB) {
                 processedData.id = parentElement.id;
-                processedData.projectName = parentElement.querySelector(".project-name");
+                processedData.projectName = parentElement.querySelector("p.project-name").textContent;
             } else if (collection === todoDB) {
                 processedData.id = parentElement.id;
-                processedData.projectId = parentElement.querySelector("todo-projectId");
-                processedData.title = parentElement.querySelector("todo-title");
-                processedData.dueDate = parentElement.querySelector("todo-dueDate");
-                processedData.priority = parentElement.querySelector("todo-priority");
-                processedData.description = parentElement.querySelector("todo-description");
+                processedData.projectId = parentElement.querySelector("p.todo-projectId").textContent;
+                processedData.title = parentElement.querySelector("p.todo-title").textContent;
+                processedData.dueDate = parentElement.querySelector("p.todo-dueDate").textContent;
+                processedData.priority = parentElement.querySelector("p.todo-priority").textContent;
+                processedData.description = parentElement.querySelector("p.todo-description").textContent;
             }
         }
 

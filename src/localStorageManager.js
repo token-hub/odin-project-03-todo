@@ -23,7 +23,17 @@ class LocalStorageManager {
 
     updateOne(data) {
         this.fetchAll();
+        const toUpdateData = this.data;
+        const updatedData = toUpdateData.map((d) => {
+            if (d.id === data.id) {
+                return { ...d, ...data };
+            } else {
+                return d;
+            }
+        });
+        localStorage.setItem(this.collection, JSON.stringify(updatedData));
     }
+
     saveOne(data) {
         this.fetchAll();
         const newData = this.data;

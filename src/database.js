@@ -10,6 +10,7 @@ class Database {
     }
     updateOne(data) {
         if (!this.isNotDataEmpty(data)) return;
+        this.db.updateOne(data);
     }
     saveOne(data) {
         if (!this.isNotDataEmpty(data)) return;

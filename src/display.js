@@ -1,3 +1,5 @@
+import { projectDB, todoDB } from "./database";
+
 class Display {
     expandDetails() {}
     getElement(selector) {
@@ -77,6 +79,33 @@ class Display {
 
                 element.appendChild(todo);
             });
+        }
+    }
+    prepareEditForm(data, collection) {
+        if (collection === projectDB) {
+            const projectId = this.getElement("#project-form-input-id");
+            const projectName = this.getElement("#project-form-input");
+            projectId.value = data.id;
+            projectName.value = data.projectName;
+        }
+    }
+    isEdit(collection) {
+        if (collection === projectDB) {
+            const projectId = this.getElementValue("#project-form-input-id");
+            if (!projectId) {
+                return false;
+            } else {
+                return projectId;
+            }
+        }
+
+        if (collection === todoDB) {
+            const todoId = this.getElementValue("#todo-form-input-id");
+            if (!todoId) {
+                return false;
+            } else {
+                return todoId;
+            }
         }
     }
 }
