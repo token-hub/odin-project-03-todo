@@ -13,7 +13,7 @@ class Display {
         }
         return null;
     }
-    getFormValues() {
+    getTodoFormValues() {
         const title = this.getElementValue("#title");
         const description = this.getElementValue("#description");
         const priority = this.getElementValue("#priority");
@@ -28,9 +28,32 @@ class Display {
             project
         };
     }
-    displayProjects(data) {}
+    getProjectFormValue() {
+        const project = this.getElementValue("#project-form-input");
+        return {
+            project
+        };
+    }
+    displayProjects(data) {
+        const element = this.getElement("#todos");
+        if (element) {
+            data.forEach((d) => {
+                const todo = document.createElement("div");
+                todo.id = d.id;
+                todo.classList.add("project");
+                todo.innerHTML = `
+                    <p>${d.project}</p>
+                    <button type="edit" id='todo-edit-btn'>Edit</button>
+                    <button type="button" id'todo-delete-btn'>Delete</button>
+                    `;
+
+                element.appendChild(todo);
+            });
+        }
+    }
+
     displayTodos(data) {
-        const element = this.getElement("#projects");
+        const element = this.getElement("#todos");
 
         if (element) {
             data.forEach((d) => {
