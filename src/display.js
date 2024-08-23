@@ -42,7 +42,10 @@ class Display {
                     <p>${d.title}</p>
                     <p>${d.dueDate}</p>
                     <p>${d.priority}</p>
-                    <p>${d.description}</p>`;
+                    <p>${d.description}</p>
+                    <button type="edit" id='todo-edit-btn'>Edit</button>
+                    <button type="button" id'todo-delete-btn'>Delete</button>
+                    `;
 
                 element.appendChild(todo);
             });
