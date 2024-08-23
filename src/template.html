@@ -13,7 +13,9 @@
         <div id="todo-form">
             <form action="">
                 <label for="Project">Project</label>
-                <select name="project" id="project" required value="project"></select>
+                <select name="project" id="project" required value="project">
+                    <option value="123123">Default</option>
+                </select>
 
                 <label for="title">title</label>
                 <input type="text" id="title" required value="title" />
@@ -24,8 +26,14 @@
                     <option value="important">Important</option>
                     <option value="urgent">urgent</option>
                 </select>
+
+                <label for="dueDate">Due Date</label>
+                <input type="text" id="dueDate" required value="dueDate" />
+
                 <label for="description">description</label>
-                <textarea id="description" required value="description"></textarea>
+                <textarea id="description" required value="description">
+                    default
+                </textarea>
                 <button id="add-todo-form-btn" type="button">Submit</button>
             </form>
         </div>
