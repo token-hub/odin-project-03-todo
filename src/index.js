@@ -6,7 +6,7 @@ class Main {
     constructor() {
         this.db = DB;
         this.display = "";
-        this.displayListeners = new DisplayListeners(this);
+        this.displayListeners = new DisplayListeners();
         this.init();
     }
 
@@ -15,18 +15,22 @@ class Main {
     }
 
     addEventListeners() {
-        this.displayListeners.addListerner("#add-todo-form-btn", this.test);
-        this.displayListeners.addListerner("#add-project-btn", this.test);
-    }
+        // todo
+        this.displayListeners.addListerner({
+            selector: "#add-todo-form-btn",
+            func: this.db.todo.saveOne,
+            objectToBind: this.db.todo
+        });
 
-    test() {
-        console.log("Listener working");
+        // project
+        this.displayListeners.addListerner({
+            selector: "#add-project-btn",
+            func: this.db.project.saveOne,
+            objectToBind: this.db.project
+        });
     }
 
     run() {
-        this.db.project.saveOne({
-            data: "hello"
-        });
         console.log("hello");
     }
 }
