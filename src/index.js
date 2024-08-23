@@ -64,10 +64,6 @@ class Main {
         const todos = this.db.todo.fetchAll();
         this.display.displayTodos(todos);
     }
-
-    run() {
-        console.log("hello");
-    }
 }
 
 const app = new Main();
