@@ -18,7 +18,9 @@ class Database {
     deleteOne(data) {
         if (!this.isNotDataEmpty(data)) return;
     }
-    fetchAll() {}
+    fetchAll() {
+        return this.db.data;
+    }
 }
 
 const projectDB = "project";
