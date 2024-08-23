@@ -2,3 +2,7 @@ body {
     margin: 0;
     background-color: pink;
 }
+
+.todo {
+    border: 1px solid;
+}
