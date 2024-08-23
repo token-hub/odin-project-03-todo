@@ -21,6 +21,7 @@
         "webpack-merge": "^6.0.1"
     },
     "dependencies": {
-        "basic-webpack-template": "file:"
+        "basic-webpack-template": "file:",
+        "uuid": "^10.0.0"
     }
 }
