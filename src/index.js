@@ -1,5 +1,5 @@
 import "./styles.css";
-import DB from "./database";
+import DB, { projectDB, todoDB } from "./database";
 import DisplayListeners from "./displayListeners";
 import Display from "./display";
 
@@ -20,6 +20,7 @@ class Main {
     addEventListeners() {
         const todoFormData = this.display.getTodoFormValues();
         todoFormData.generateId = true;
+
         const projectFormData = this.display.getProjectFormValue();
         projectFormData.generateId = true;
 
@@ -37,6 +38,20 @@ class Main {
             func: this.db.project.saveOne,
             objectToBind: this.db.project,
             data: projectFormData
+        });
+
+        // const todoEditBtns = this.display.getElements(".todo-edit-btn");
+        // const todoDeleteBtns = this.display.getElements(".todo-delete-btn");
+        // const projectEditBtns = this.display.getElements(".project-edit-btn");
+        // const projectDeleteBtns = this.display.getElements(".project-delete-btn");
+
+        // todo delete buttons
+        this.displayListeners.addFormListeners({
+            selector: ".todo-delete-btn",
+            func: this.db.todo.deleteOne,
+            objectToBind: this.db.todo,
+            collection: todoDB,
+            isEdit: false
         });
     }
 
