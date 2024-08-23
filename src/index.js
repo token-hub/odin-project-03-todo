@@ -12,34 +12,37 @@ class Main {
     }
 
     init() {
-        this.addEventListeners();
         this.fetchProjects();
         this.fetchTodos();
+        this.addEventListeners();
     }
 
     addEventListeners() {
-        const data = this.display.getFormValues();
-        data.generateId = true;
+        const todoFormData = this.display.getTodoFormValues();
+        todoFormData.generateId = true;
+        const projectFormData = this.display.getProjectFormValue();
+        projectFormData.generateId = true;
 
-        // todo
+        // todo submit button
         this.displayListeners.addListener({
             selector: "#add-todo-form-btn",
             func: this.db.todo.saveOne,
             objectToBind: this.db.todo,
-            data
+            data: todoFormData
         });
 
-        // project
+        // project todo submit button
         this.displayListeners.addListener({
-            selector: "#add-project-btn",
+            selector: "#add-project-form-btn",
             func: this.db.project.saveOne,
             objectToBind: this.db.project,
-            data: { hello: "hello from project" }
+            data: projectFormData
         });
     }
 
     fetchProjects() {
         const projects = this.db.project.fetchAll();
+        this.display.displayProjects(projects);
     }
 
     fetchTodos() {
