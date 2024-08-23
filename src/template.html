@@ -9,33 +9,40 @@
         <button>Add Todo</button>
         <div id="projects"></div>
         <button id="add-project-btn">Add Project</button>
+        <main>
+            <div id="todos"></div>
+            <div id="todo-form">
+                <form action="">
+                    <label for="Project">Project</label>
+                    <select name="project" id="project" required value="project">
+                        <option value="123123">Default</option>
+                    </select>
 
-        <div id="todo-form">
-            <form action="">
+                    <label for="title">title</label>
+                    <input type="text" id="title" required value="title" />
+
+                    <label for="priority">priority</label>
+                    <select name="priority" id="priority" value="low" required>
+                        <option value="low">Low</option>
+                        <option value="important">Important</option>
+                        <option value="urgent">urgent</option>
+                    </select>
+
+                    <label for="dueDate">Due Date</label>
+                    <input type="text" id="dueDate" required value="dueDate" />
+
+                    <label for="description">description</label>
+                    <textarea id="description" required value="description">
+                        default
+                    </textarea>
+                    <button id="add-todo-form-btn" type="button">Submit</button>
+                </form>
+            </div>
+            <div id="project-form">
                 <label for="Project">Project</label>
-                <select name="project" id="project" required value="project">
-                    <option value="123123">Default</option>
-                </select>
-
-                <label for="title">title</label>
-                <input type="text" id="title" required value="title" />
-
-                <label for="priority">priority</label>
-                <select name="priority" id="priority" value="low" required>
-                    <option value="low">Low</option>
-                    <option value="important">Important</option>
-                    <option value="urgent">urgent</option>
-                </select>
-
-                <label for="dueDate">Due Date</label>
-                <input type="text" id="dueDate" required value="dueDate" />
-
-                <label for="description">description</label>
-                <textarea id="description" required value="description">
-                    default
-                </textarea>
-                <button id="add-todo-form-btn" type="button">Submit</button>
-            </form>
-        </div>
+                <input type="text" id="project-form-input" required value="project" />
+                <button id="add-project-form-btn" type="button">Submit</button>
+            </div>
+        </main>
     </body>
 </html>
