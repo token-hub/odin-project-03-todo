@@ -17,14 +17,15 @@ class Database {
     }
     deleteOne(data) {
         if (!this.isNotDataEmpty(data)) return;
+        this.db.deleteOne(data);
     }
     fetchAll() {
         return this.db.data;
     }
 }
 
-const projectDB = "project";
-const todoDB = "todo";
+export const projectDB = "project";
+export const todoDB = "todo";
 const projectLocalStorage = new Database(new LocalStorageManager(projectDB));
 const todoLocalStorage = new Database(new LocalStorageManager(todoDB));
 
