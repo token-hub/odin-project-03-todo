@@ -19,22 +19,20 @@
                     <select name="project" id="projectId" required></select>
 
                     <label for="title">title</label>
-                    <input type="text" id="title" required value="title" />
+                    <input type="text" id="title" required />
 
                     <label for="priority">priority</label>
-                    <select name="priority" id="priority" value="low" required>
+                    <select name="priority" id="priority" required>
                         <option value="low">Low</option>
                         <option value="important">Important</option>
                         <option value="urgent">urgent</option>
                     </select>
 
                     <label for="dueDate">Due Date</label>
-                    <input type="text" id="dueDate" required value="dueDate" />
+                    <input type="date" id="dueDate" required />
 
                     <label for="description">description</label>
-                    <textarea id="description" required value="description">
-                        default
-                    </textarea>
+                    <textarea id="description" required value="description"> </textarea>
                     <button id="add-todo-form-btn" type="button">Submit</button>
                 </form>
             </div>
