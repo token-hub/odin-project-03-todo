@@ -1,11 +1,15 @@
 import DataUtil from "../dataUtil";
 import Display from "./display";
 import { projectDB, todoDB } from "../storage/database";
+import ProjectGetFormData from "../dataUtil/ProjectGetFormData";
+import TodoGetFormData from "../dataUtil/TodoGetFormData";
 
 class DisplayListeners {
     constructor() {
         this.dataUtil = new DataUtil();
         this.display = new Display();
+        this.projectGetFormData = new ProjectGetFormData();
+        this.todoGetFormData = new TodoGetFormData();
     }
 
     addListener({ selector, func, objectToBind, collection }) {
@@ -21,10 +25,10 @@ class DisplayListeners {
                 let isEdit;
 
                 if (collection === projectDB) {
-                    data = this.display.getProjectFormValue();
+                    data = this.projectGetFormData.getFormData();
                     isEdit = this.display.isEdit(projectDB);
                 } else if (collection === todoDB) {
-                    data = this.display.getTodoFormValues();
+                    data = this.todoGetFormData.getFormData();
                     isEdit = this.display.isEdit(todoDB);
                 }
 

@@ -5,56 +5,8 @@ class Display {
     constructor() {
         this.displayElements = new DisplayElements();
     }
-    // showing and unshowing data
-    getTodoFormValues() {
-        const title = this.displayElements.getElementValue("#title");
-        const description = this.displayElements.getElementValue("#description");
-        const priority = this.displayElements.getElementValue("#priority");
-        const dueDate = this.displayElements.getElementValue("#dueDate");
-        const projectId = this.displayElements.getElementValue("#projectId");
-
-        return {
-            title,
-            description,
-            priority,
-            dueDate,
-            projectId
-        };
-    }
-    getProjectFormValue() {
-        const project = this.displayElements.getElementValue("#project-form-input");
-        return {
-            project
-        };
-    }
     display() {
         throw Error("I am not implemented yet!");
-    }
-    getFormValues() {
-        throw Error("I am not implemented yet");
-    }
-
-    displayTodos(data) {
-        const element = this.displayElements.getElement("#todos");
-
-        if (element) {
-            data.forEach((d) => {
-                const todo = document.createElement("div");
-                todo.id = d.id;
-                todo.classList.add("todo");
-                todo.innerHTML = `
-                    <p class='todo-projectId'>${d.projectId}</p>
-                    <p class='todo-title'>${d.title}</p>
-                    <p class='todo-dueDate'>${d.dueDate}</p>
-                    <p class='todo-priority'>${d.priority}</p>
-                    <p class-'todo-description'>${d.description}</p>
-                    <button type="edit" class='todo-edit-btn'>Edit</button>
-                    <button type="button" class='todo-delete-btn'>Delete</button>
-                    `;
-
-                element.appendChild(todo);
-            });
-        }
     }
     prepareEditForm(data, collection) {
         if (collection === projectDB) {
