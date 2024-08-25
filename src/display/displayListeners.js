@@ -1,18 +1,11 @@
 import DataUtil from "../dataUtil";
-import Display from "./display";
-import { projectDB, todoDB } from "../storage/database";
-import ProjectGetFormData from "../dataUtil/ProjectGetFormData";
-import TodoGetFormData from "../dataUtil/TodoGetFormData";
 
 class DisplayListeners {
     constructor() {
         this.dataUtil = new DataUtil();
-        this.display = new Display();
-        this.projectGetFormData = new ProjectGetFormData();
-        this.todoGetFormData = new TodoGetFormData();
     }
 
-    addListener({ selector, func, objectToBind, collection }) {
+    addListener({ selector, func, objectToBind, entityModule }) {
         const element = document.querySelector(selector);
         if (element) {
             let boundFunc;
@@ -21,17 +14,8 @@ class DisplayListeners {
             // because the functionality will be coming from a different module
             // which is being imported too in the index.js
             element.addEventListener("click", () => {
-                let data;
-                let isEdit;
-
-                if (collection === projectDB) {
-                    data = this.projectGetFormData.getFormData();
-                    isEdit = this.display.isEdit(projectDB);
-                } else if (collection === todoDB) {
-                    data = this.todoGetFormData.getFormData();
-                    isEdit = this.display.isEdit(todoDB);
-                }
-
+                let data = entityModule.getFormData;
+                let isEdit = entityModule.isEditFormActive();
                 data.id = isEdit ? isEdit : this.dataUtil.generateId();
 
                 if (Array.isArray(func)) {

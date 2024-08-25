@@ -1,16 +1,28 @@
 import Display from "./display";
+import ProjectGetFormData from "../dataUtil/ProjectGetFormData";
 
 class DisplayProject extends Display {
+    constructor() {
+        super();
+        this.formData = new ProjectGetFormData();
+    }
+
     #identifiers = {
         main: "#projects",
         projectId: "#project-form-input-id",
         projectName: "#project-form-input"
     };
+
     #className = "project";
 
     get identifiers() {
         return this.#identifiers;
     }
+
+    get getFormData() {
+        return this.formData.getFormData();
+    }
+
     get getClassName() {
         return this.#className;
     }
@@ -33,7 +45,7 @@ class DisplayProject extends Display {
         }
     }
 
-    prepareEditForm(data, collection) {
+    prepareEditForm(data) {
         const projectId = this.displayElements.getElement(this.identifiers.projectId);
         const projectName = this.displayElements.getElement(this.identifiers.projectName);
         projectId.value = data.id;

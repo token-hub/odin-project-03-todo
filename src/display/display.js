@@ -8,28 +8,11 @@ class Display {
     display() {
         throw Error("I am not implemented yet!");
     }
-    prepareEditForm(data, collection) {
+    prepareEditForm() {
         throw Error("I am not implemented yet!");
     }
-    isEditFormActive(collection) {
+    isEditFormActive() {
         throw Error("I am not implemented yet!");
-        if (collection === projectDB) {
-            const projectId = this.displayElements.getElementValue("#project-form-input-id");
-            if (!projectId) {
-                return false;
-            } else {
-                return projectId;
-            }
-        }
-
-        if (collection === todoDB) {
-            const todoId = this.displayElements.getElementValue("#todo-form-input-id");
-            if (!todoId) {
-                return false;
-            } else {
-                return todoId;
-            }
-        }
     }
 }
 

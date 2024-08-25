@@ -27,7 +27,7 @@ class Main {
             selector: "#add-todo-form-btn",
             func: this.db.todo.saveOne,
             objectToBind: this.db.todo,
-            collection: todoDB
+            entityModule: this.displayTodo
         });
 
         // project todo submit button
@@ -35,7 +35,7 @@ class Main {
             selector: "#add-project-form-btn",
             func: [this.db.project.saveOne, this.db.project.updateOne],
             objectToBind: this.db.project,
-            collection: projectDB
+            entityModule: this.displayProject
         });
 
         // todo delete buttons
@@ -60,7 +60,7 @@ class Main {
         this.displayListeners.addFormListeners({
             selector: ".project-edit-btn",
             func: this.displayProject.prepareEditForm,
-            objectToBind: this.display,
+            objectToBind: this.displayProject,
             collection: projectDB,
             isEdit: true
         });

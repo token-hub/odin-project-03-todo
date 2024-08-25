@@ -1,10 +1,17 @@
 import Display from "./display";
+import TodoGetFormData from "../dataUtil/TodoGetFormData";
 
 class DisplayTodo extends Display {
+    constructor() {
+        super();
+        this.formData = new TodoGetFormData();
+    }
+
     #identifiers = {
         main: "todos",
         todoId: "#todo-form-input-id"
     };
+
     #className = "todo";
 
     get identifiers() {
@@ -13,6 +20,10 @@ class DisplayTodo extends Display {
 
     get getClassName() {
         return this.#className;
+    }
+
+    get getFormData() {
+        return this.formData.getFormData();
     }
 
     display(data) {
