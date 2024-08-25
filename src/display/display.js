@@ -1,4 +1,3 @@
-import { projectDB, todoDB } from "../storage/database";
 import DisplayElements from "./displayElements";
 
 class Display {
@@ -15,12 +14,5 @@ class Display {
         throw Error("I am not implemented yet!");
     }
 }
-
-// get elements
-// get elements values
-// displaying projects
-// displaying todos
-// preparing edit form
-// checking if is it a edit
 
 export default Display;
