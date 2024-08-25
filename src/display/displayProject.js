@@ -10,7 +10,8 @@ class DisplayProject extends Display {
     #identifiers = {
         main: "#projects",
         projectId: "#project-form-input-id",
-        projectName: "#project-form-input"
+        projectName: "#project-form-input",
+        projectSelect: "#projectId"
     };
 
     #className = "project";
@@ -45,6 +46,18 @@ class DisplayProject extends Display {
                     `;
 
                 element.appendChild(project);
+            });
+        }
+    }
+
+    populateProjectList(data) {
+        const element = this.displayElements.getElement(this.identifiers.projectSelect);
+        if (element && data.length) {
+            data.forEach((d) => {
+                const option = document.createElement("option");
+                option.value = d.id;
+                option.textContent = d.project;
+                element.appendChild(option);
             });
         }
     }

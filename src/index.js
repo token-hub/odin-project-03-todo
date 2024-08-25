@@ -66,6 +66,7 @@ class Main {
     fetchProjects() {
         const projects = this.db.project.fetchAll();
         this.displayProject.display(projects);
+        this.displayProject.populateProjectList(projects);
     }
 
     fetchTodos() {
