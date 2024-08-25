@@ -1,9 +1,19 @@
+import DataUtil from "../dataUtil/dataUtil";
+import { projectDB } from "./database";
+
 class LocalStorageManager {
     #data = [];
 
     constructor(collection) {
         this.collection = collection;
+        this.dataUtil = new DataUtil();
         this.fetchAll();
+    }
+
+    init() {
+        const initData = [{ project: "default", id: this.dataUtil.generateId() }];
+        localStorage.setItem(this.collection, JSON.stringify(initData));
+        return initData;
     }
 
     get data() {
@@ -18,6 +28,10 @@ class LocalStorageManager {
         const data = localStorage.getItem(this.collection);
         if (data) {
             this.setData = JSON.parse(data);
+        } else {
+            if (this.collection === projectDB) {
+                this.setData = this.init();
+            }
         }
     }
 
@@ -40,6 +54,7 @@ class LocalStorageManager {
         newData.push(data);
         localStorage.setItem(this.collection, JSON.stringify(newData));
     }
+
     deleteOne(data) {
         this.fetchAll();
         const currentData = this.data;
