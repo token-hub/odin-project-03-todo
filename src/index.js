@@ -1,18 +1,15 @@
 import "./styles.css";
-import DB, { projectDB, todoDB } from "./storage/database";
+import DB from "./storage/database";
 import DisplayListeners from "./display/displayListeners";
-import Display from "./display/display";
 import DisplayProject from "./display/displayProject";
 import DisplayTodo from "./display/displayTodo";
 
 class Main {
     constructor() {
         this.db = DB;
-        this.display = new Display();
         this.displayProject = new DisplayProject();
         this.displayTodo = new DisplayTodo();
         this.displayListeners = new DisplayListeners();
-        this.init();
     }
 
     init() {
@@ -78,4 +75,4 @@ class Main {
 }
 
 const app = new Main();
-// app.run();
+app.init();
