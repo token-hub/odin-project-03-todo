@@ -22,7 +22,7 @@ class Main {
         // todo submit button
         this.displayListeners.addListener({
             selector: "#add-todo-form-btn",
-            func: this.db.todo.saveOne,
+            func: [this.db.todo.saveOne, this.db.todo.updateOne],
             objectToBind: this.db.todo,
             entityModule: this.displayTodo
         });
