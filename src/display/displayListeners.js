@@ -1,4 +1,4 @@
-import DataUtil from "../dataUtil";
+import DataUtil from "../dataUtil/dataUtil";
 
 class DisplayListeners {
     constructor() {
