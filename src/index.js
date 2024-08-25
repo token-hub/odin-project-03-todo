@@ -59,7 +59,7 @@ class Main {
         // project edit buttons
         this.displayListeners.addFormListeners({
             selector: ".project-edit-btn",
-            func: this.display.prepareEditForm,
+            func: this.displayProject.prepareEditForm,
             objectToBind: this.display,
             collection: projectDB,
             isEdit: true

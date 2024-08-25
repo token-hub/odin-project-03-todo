@@ -9,12 +9,7 @@ class Display {
         throw Error("I am not implemented yet!");
     }
     prepareEditForm(data, collection) {
-        if (collection === projectDB) {
-            const projectId = this.displayElements.getElement("#project-form-input-id");
-            const projectName = this.displayElements.getElement("#project-form-input");
-            projectId.value = data.id;
-            projectName.value = data.projectName;
-        }
+        throw Error("I am not implemented yet!");
     }
     isEdit(collection) {
         if (collection === projectDB) {

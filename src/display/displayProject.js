@@ -1,18 +1,22 @@
 import Display from "./display";
 
 class DisplayProject extends Display {
-    #identifier = "#projects";
+    #identifiers = {
+        main: "#projects",
+        projectId: "#project-form-input-id",
+        projectName: "#project-form-input"
+    };
     #className = "project";
 
-    get identifier() {
-        return this.#identifier;
+    get identifiers() {
+        return this.#identifiers;
     }
     get getClassName() {
         return this.#className;
     }
 
     display(data) {
-        const element = this.displayElements.getElement(this.identifier);
+        const element = this.displayElements.getElement(this.identifiers.main);
         if (element) {
             data.forEach((d) => {
                 const project = document.createElement("div");
@@ -27,6 +31,13 @@ class DisplayProject extends Display {
                 element.appendChild(project);
             });
         }
+    }
+
+    prepareEditForm(data, collection) {
+        const projectId = this.displayElements.getElement(this.identifiers.projectId);
+        const projectName = this.displayElements.getElement(this.identifiers.projectName);
+        projectId.value = data.id;
+        projectName.value = data.projectName;
     }
 }
 
