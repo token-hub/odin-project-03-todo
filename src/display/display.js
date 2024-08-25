@@ -11,7 +11,8 @@ class Display {
     prepareEditForm(data, collection) {
         throw Error("I am not implemented yet!");
     }
-    isEdit(collection) {
+    isEditFormActive(collection) {
+        throw Error("I am not implemented yet!");
         if (collection === projectDB) {
             const projectId = this.displayElements.getElementValue("#project-form-input-id");
             if (!projectId) {

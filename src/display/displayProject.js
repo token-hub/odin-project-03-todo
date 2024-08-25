@@ -39,6 +39,15 @@ class DisplayProject extends Display {
         projectId.value = data.id;
         projectName.value = data.projectName;
     }
+
+    isEditFormActive() {
+        const projectId = this.displayElements.getElementValue(this.identifiers.projectId);
+        if (!projectId) {
+            return false;
+        } else {
+            return projectId;
+        }
+    }
 }
 
 export default DisplayProject;

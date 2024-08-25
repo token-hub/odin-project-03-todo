@@ -1,18 +1,22 @@
 import Display from "./display";
 
 class DisplayTodo extends Display {
-    #identifier = "#todos";
+    #identifiers = {
+        main: "todos",
+        todoId: "#todo-form-input-id"
+    };
     #className = "todo";
 
-    get identifier() {
-        return this.#identifier;
+    get identifiers() {
+        return this.#identifiers;
     }
+
     get getClassName() {
         return this.#className;
     }
 
     display(data) {
-        const element = this.displayElements.getElement(this.identifier);
+        const element = this.displayElements.getElement(this.identifiers.main);
 
         if (element) {
             data.forEach((d) => {
@@ -31,6 +35,15 @@ class DisplayTodo extends Display {
 
                 element.appendChild(todo);
             });
+        }
+    }
+
+    isEditFormActive() {
+        const todoId = this.displayElements.getElementValue(this.identifiers.todoId);
+        if (!todoId) {
+            return false;
+        } else {
+            return todoId;
         }
     }
 }
