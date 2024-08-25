@@ -8,7 +8,7 @@ class DisplayTodo extends Display {
     }
 
     #identifiers = {
-        main: "todos",
+        main: "#todos",
         todoId: "#todo-form-input-id"
     };
 
