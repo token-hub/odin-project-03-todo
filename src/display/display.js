@@ -1,4 +1,4 @@
-import { projectDB, todoDB } from "../database";
+import { projectDB, todoDB } from "../storage/database";
 import DisplayElements from "./displayElements";
 
 class Display {
@@ -27,6 +27,9 @@ class Display {
         return {
             project
         };
+    }
+    displayElements(component) {
+        component.display();
     }
     displayProjects(data) {
         const element = this.displayElements.getElement("#projects");

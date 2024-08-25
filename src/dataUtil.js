@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { projectDB, todoDB } from "./database";
+import { projectDB, todoDB } from "./storage/database";
 
 class DataUtil {
     generateId() {

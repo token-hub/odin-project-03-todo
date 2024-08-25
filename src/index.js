@@ -1,5 +1,5 @@
 import "./styles.css";
-import DB, { projectDB, todoDB } from "./database";
+import DB, { projectDB, todoDB } from "./storage/database";
 import DisplayListeners from "./display/displayListeners";
 import Display from "./display/display";
 

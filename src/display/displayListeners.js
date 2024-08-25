@@ -1,6 +1,6 @@
 import DataUtil from "../dataUtil";
 import Display from "./display";
-import { projectDB, todoDB } from "../database";
+import { projectDB, todoDB } from "../storage/database";
 
 class DisplayListeners {
     constructor() {
