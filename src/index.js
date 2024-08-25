@@ -1,7 +1,7 @@
 import "./styles.css";
 import DB, { projectDB, todoDB } from "./database";
-import DisplayListeners from "./displayListeners";
-import Display from "./display";
+import DisplayListeners from "./display/displayListeners";
+import Display from "./display/display";
 
 class Main {
     constructor() {

@@ -1,32 +1,18 @@
-import { projectDB, todoDB } from "./database";
+import { projectDB, todoDB } from "../database";
+import DisplayElements from "./displayElements";
 
 class Display {
+    constructor() {
+        this.displayElements = new DisplayElements();
+    }
+    // showing and unshowing data
     expandDetails() {}
-    getElement(selector) {
-        const element = document.querySelector(selector);
-        if (element) {
-            return element;
-        }
-    }
-    getElements(selector) {
-        const elements = document.querySelectorAll(selector);
-        if (elements.length) {
-            return elements;
-        }
-    }
-    getElementValue(selector) {
-        const element = this.getElement(selector);
-        if (element) {
-            return element.value;
-        }
-        return null;
-    }
     getTodoFormValues() {
-        const title = this.getElementValue("#title");
-        const description = this.getElementValue("#description");
-        const priority = this.getElementValue("#priority");
-        const dueDate = this.getElementValue("#dueDate");
-        const projectId = this.getElementValue("#projectId");
+        const title = this.displayElements.getElementValue("#title");
+        const description = this.displayElements.getElementValue("#description");
+        const priority = this.displayElements.getElementValue("#priority");
+        const dueDate = this.displayElements.getElementValue("#dueDate");
+        const projectId = this.displayElements.getElementValue("#projectId");
 
         return {
             title,
@@ -37,13 +23,13 @@ class Display {
         };
     }
     getProjectFormValue() {
-        const project = this.getElementValue("#project-form-input");
+        const project = this.displayElements.getElementValue("#project-form-input");
         return {
             project
         };
     }
     displayProjects(data) {
-        const element = this.getElement("#projects");
+        const element = this.displayElements.getElement("#projects");
         if (element) {
             data.forEach((d) => {
                 const project = document.createElement("div");
@@ -60,7 +46,7 @@ class Display {
         }
     }
     displayTodos(data) {
-        const element = this.getElement("#todos");
+        const element = this.displayElements.getElement("#todos");
 
         if (element) {
             data.forEach((d) => {
@@ -83,15 +69,15 @@ class Display {
     }
     prepareEditForm(data, collection) {
         if (collection === projectDB) {
-            const projectId = this.getElement("#project-form-input-id");
-            const projectName = this.getElement("#project-form-input");
+            const projectId = this.displayElements.getElement("#project-form-input-id");
+            const projectName = this.displayElements.getElement("#project-form-input");
             projectId.value = data.id;
             projectName.value = data.projectName;
         }
     }
     isEdit(collection) {
         if (collection === projectDB) {
-            const projectId = this.getElementValue("#project-form-input-id");
+            const projectId = this.displayElements.getElementValue("#project-form-input-id");
             if (!projectId) {
                 return false;
             } else {
@@ -100,7 +86,7 @@ class Display {
         }
 
         if (collection === todoDB) {
-            const todoId = this.getElementValue("#todo-form-input-id");
+            const todoId = this.displayElements.getElementValue("#todo-form-input-id");
             if (!todoId) {
                 return false;
             } else {
@@ -109,5 +95,12 @@ class Display {
         }
     }
 }
+
+// get elements
+// get elements values
+// displaying projects
+// displaying todos
+// preparing edit form
+// checking if is it a edit
 
 export default Display;
