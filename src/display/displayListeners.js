@@ -33,15 +33,15 @@ class DisplayListeners {
     }
 
     // for the edit and delete buttons listeners
-    addFormListeners({ selector, func, objectToBind, isEdit = false, collection }) {
+    addFormListeners({ selector, func, objectToBind, isEdit = false, entityModule }) {
         const elements = document.querySelectorAll(selector);
         if (elements.length) {
             elements.forEach((elem) => {
                 elem.addEventListener("click", () => {
                     const parent = elem.parentElement;
-                    let data = this.dataUtil.getDataFromChildElements(parent, collection, isEdit);
+                    let data = entityModule.getDataFromChild(parent, isEdit);
                     const boundFunc = func.bind(objectToBind);
-                    boundFunc(data, collection);
+                    boundFunc(data);
                 });
             });
         }

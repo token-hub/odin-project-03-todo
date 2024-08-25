@@ -26,6 +26,10 @@ class DisplayTodo extends Display {
         return this.formData.getFormData();
     }
 
+    getDataFromChild(parentElement, isEdit) {
+        return this.formData.getDataFromChildElements(parentElement, isEdit);
+    }
+
     display(data) {
         const element = this.displayElements.getElement(this.identifiers.main);
 

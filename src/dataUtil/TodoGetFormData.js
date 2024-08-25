@@ -6,7 +6,14 @@ class TodoGetFormData {
         description: "#description",
         priority: "#priority",
         dueDate: "#dueDate",
-        projectId: "#projectId"
+        projectId: "#projectId",
+        pTag: {
+            projectId: "p.todo-projectId",
+            title: "p.todo-title",
+            dueDate: "p.todo-dueDate",
+            priority: "p.todo-priority",
+            description: "p.todo-description"
+        }
     };
 
     constructor() {
@@ -31,6 +38,23 @@ class TodoGetFormData {
             dueDate,
             projectId
         };
+    }
+
+    getDataFromChildElements(parentElement, isEdit) {
+        let processedData = {};
+
+        if (!isEdit) {
+            processedData.id = parentElement.id;
+        } else {
+            processedData.id = parentElement.id;
+            processedData.projectId = parentElement.querySelector(this.identifiers.pTag.projectId).textContent;
+            processedData.title = parentElement.querySelector(this.identifiers.pTag.title).textContent;
+            processedData.dueDate = parentElement.querySelector(this.identifiers.pTag.dueDate).textContent;
+            processedData.priority = parentElement.querySelector(this.identifiers.pTag.priority).textContent;
+            processedData.description = parentElement.querySelector(this.identifiers.pTag.description).textContent;
+        }
+
+        return processedData;
     }
 }
 

@@ -23,6 +23,10 @@ class DisplayProject extends Display {
         return this.formData.getFormData();
     }
 
+    getDataFromChild(parentElement, isEdit) {
+        return this.formData.getDataFromChildElements(parentElement, isEdit);
+    }
+
     get getClassName() {
         return this.#className;
     }
