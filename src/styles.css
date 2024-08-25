@@ -14,3 +14,7 @@ body {
 .hidden {
     display: none;
 }
+
+.completed p {
+    text-decoration: line-through;
+}

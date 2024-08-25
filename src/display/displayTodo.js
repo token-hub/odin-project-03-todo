@@ -16,7 +16,8 @@ class DisplayTodo extends Display {
             title: "#title",
             priority: "#priority",
             dueDate: "#dueDate",
-            description: "#description"
+            description: "#description",
+            isCompleted: "#isCompleted"
         }
     };
 
@@ -46,14 +47,23 @@ class DisplayTodo extends Display {
                 const todo = document.createElement("div");
                 todo.id = d.id;
                 todo.classList.add(this.getClassName);
+
+                if (d.isCompleted) {
+                    todo.classList.add("completed");
+                } else {
+                    todo.classList.remove("completed");
+                }
+
                 todo.innerHTML = `
                         <p class='todo-projectId hidden'>${d.projectId}</p>
+                        <p class='todo-isCompleted hidden'>${d.isCompleted}</p>
                         <p class='todo-title'>${d.title}</p>
                         <p class='todo-dueDate'>${d.dueDate}</p>
                         <p class='todo-priority'>${d.priority}</p>
                         <p class='todo-description'>${d.description}</p>
-                        <button type="edit" class='todo-edit-btn'>Edit</button>
+                        <button type="button" class='todo-edit-btn'>Edit</button>
                         <button type="button" class='todo-delete-btn'>Delete</button>
+                        <button type="button" class='todo-isCompleted-btn'>${d.isComplete ? "uncomplete" : "completed"}</button>
                         `;
 
                 element.appendChild(todo);

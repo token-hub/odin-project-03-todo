@@ -53,6 +53,16 @@ class Main {
             isEdit: false
         });
 
+        // todo mark complete buttons
+        this.displayListeners.addFormListeners({
+            selector: ".todo-isCompleted-btn",
+            func: this.storage.todo.updateOne,
+            objectToBind: this.storage.todo,
+            entityModule: this.displayTodo,
+            isEdit: true,
+            isCompleted: true
+        });
+
         // project delete buttons
         this.displayListeners.addFormListeners({
             selector: ".project-delete-btn",

@@ -33,17 +33,18 @@ class DisplayListeners {
         }
     }
 
-    // for the edit and delete buttons listeners
-    addFormListeners({ selector, func, objectToBind, isEdit = false, entityModule }) {
+    // for the edit, delete, mark complete buttons listeners
+    addFormListeners({ selector, func, objectToBind, isEdit = false, entityModule, isCompleted = false }) {
         const elements = document.querySelectorAll(selector);
         if (elements.length) {
             elements.forEach((elem) => {
                 elem.addEventListener("click", () => {
                     const parent = elem.parentElement;
                     let data = entityModule.getDataFromChild(parent, isEdit);
+                    if (isCompleted) data.isCompleted = !data.isCompleted;
                     const boundFunc = func.bind(objectToBind);
                     boundFunc(data);
-                    if (!isEdit) location.reload();
+                    if (!isEdit || isCompleted) location.reload();
                 });
             });
         }
