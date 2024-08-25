@@ -6,10 +6,20 @@
         <title>Document</title>
     </head>
     <body>
-        <button>Add Todo</button>
-        <div id="projects"></div>
-        <button id="add-project-btn">Add Project</button>
         <main>
+            <h2>Projects</h2>
+            <div id="projects"></div>
+            <div id="project-form">
+                <form action="">
+                    <input type="hidden" id="project-form-input-id" />
+                    <label for="Project">Project</label>
+                    <input type="text" id="project-form-input" required />
+                    <button id="add-project-form-btn" type="button">Submit</button>
+                </form>
+            </div>
+            <br /><br />
+
+            <h2>Todos</h2>
             <div id="todos"></div>
             <div id="todo-form">
                 <form action="">
@@ -34,14 +44,6 @@
                     <label for="description">description</label>
                     <textarea id="description" required value="description"> </textarea>
                     <button id="add-todo-form-btn" type="button">Submit</button>
-                </form>
-            </div>
-            <div id="project-form">
-                <form action="">
-                    <input type="hidden" id="project-form-input-id" />
-                    <label for="Project">Project</label>
-                    <input type="text" id="project-form-input" required />
-                    <button id="add-project-form-btn" type="button">Submit</button>
                 </form>
             </div>
         </main>
