@@ -1,5 +1,5 @@
 import DataUtil from "../dataUtil/dataUtil";
-import { projectDB } from "./database";
+import { projectStorage } from "./storage";
 
 class LocalStorageManager {
     #data = [];
@@ -29,7 +29,7 @@ class LocalStorageManager {
         if (data) {
             this.setData = JSON.parse(data);
         } else {
-            if (this.collection === projectDB) {
+            if (this.collection === projectStorage) {
                 this.setData = this.init();
             }
         }

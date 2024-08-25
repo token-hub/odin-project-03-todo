@@ -43,7 +43,7 @@ class DisplayListeners {
                     let data = entityModule.getDataFromChild(parent, isEdit);
                     const boundFunc = func.bind(objectToBind);
                     boundFunc(data);
-                    location.reload();
+                    if (!isEdit) location.reload();
                 });
             });
         }

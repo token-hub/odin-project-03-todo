@@ -1,12 +1,12 @@
 import "./styles.css";
-import DB from "./storage/database";
+import storage from "./storage/storage";
 import DisplayListeners from "./display/displayListeners";
 import DisplayProject from "./display/displayProject";
 import DisplayTodo from "./display/displayTodo";
 
 class Main {
     constructor() {
-        this.db = DB;
+        this.storage = storage;
         this.displayProject = new DisplayProject();
         this.displayTodo = new DisplayTodo();
         this.displayListeners = new DisplayListeners();
@@ -22,16 +22,16 @@ class Main {
         // todo submit button
         this.displayListeners.addListener({
             selector: "#add-todo-form-btn",
-            func: [this.db.todo.saveOne, this.db.todo.updateOne],
-            objectToBind: this.db.todo,
+            func: [this.storage.todo.saveOne, this.storage.todo.updateOne],
+            objectToBind: this.storage.todo,
             entityModule: this.displayTodo
         });
 
         // project todo submit button
         this.displayListeners.addListener({
             selector: "#add-project-form-btn",
-            func: [this.db.project.saveOne, this.db.project.updateOne],
-            objectToBind: this.db.project,
+            func: [this.storage.project.saveOne, this.storage.project.updateOne],
+            objectToBind: this.storage.project,
             entityModule: this.displayProject
         });
 
@@ -47,8 +47,8 @@ class Main {
         // todo delete buttons
         this.displayListeners.addFormListeners({
             selector: ".todo-delete-btn",
-            func: this.db.todo.deleteOne,
-            objectToBind: this.db.todo,
+            func: this.storage.todo.deleteOne,
+            objectToBind: this.storage.todo,
             entityModule: this.displayTodo,
             isEdit: false
         });
@@ -56,8 +56,8 @@ class Main {
         // project delete buttons
         this.displayListeners.addFormListeners({
             selector: ".project-delete-btn",
-            func: this.db.project.deleteOne,
-            objectToBind: this.db.project,
+            func: this.storage.project.deleteOne,
+            objectToBind: this.storage.project,
             entityModule: this.displayProject,
             isEdit: false
         });
@@ -73,13 +73,13 @@ class Main {
     }
 
     fetchProjects() {
-        const projects = this.db.project.fetchAll();
+        const projects = this.storage.project.fetchAll();
         this.displayProject.display(projects);
         this.displayProject.populateProjectList(projects);
     }
 
     fetchTodos() {
-        const todos = this.db.todo.fetchAll();
+        const todos = this.storage.todo.fetchAll();
         this.displayTodo.display(todos);
     }
 }
