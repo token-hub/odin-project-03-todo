@@ -2,11 +2,13 @@ import "./styles.css";
 import DB, { projectDB, todoDB } from "./storage/database";
 import DisplayListeners from "./display/displayListeners";
 import Display from "./display/display";
+import DisplayProject from "./display/displayProject";
 
 class Main {
     constructor() {
         this.db = DB;
         this.display = new Display();
+        this.displayProject = new DisplayProject();
         this.displayListeners = new DisplayListeners();
         this.init();
     }
@@ -64,7 +66,7 @@ class Main {
 
     fetchProjects() {
         const projects = this.db.project.fetchAll();
-        this.display.displayProjects(projects);
+        this.displayProject.display(projects);
     }
 
     fetchTodos() {

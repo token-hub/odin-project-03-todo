@@ -6,7 +6,6 @@ class Display {
         this.displayElements = new DisplayElements();
     }
     // showing and unshowing data
-    expandDetails() {}
     getTodoFormValues() {
         const title = this.displayElements.getElementValue("#title");
         const description = this.displayElements.getElementValue("#description");
@@ -28,26 +27,13 @@ class Display {
             project
         };
     }
-    displayElements(component) {
-        component.display();
+    display() {
+        throw Error("I am not implemented yet!");
     }
-    displayProjects(data) {
-        const element = this.displayElements.getElement("#projects");
-        if (element) {
-            data.forEach((d) => {
-                const project = document.createElement("div");
-                project.id = d.id;
-                project.classList.add("project");
-                project.innerHTML = `
-                    <p class='project-name'>${d.project}</p>
-                    <button type="edit" class='project-edit-btn'>Edit</button>
-                    <button type="button" class='project-delete-btn'>Delete</button>
-                    `;
+    getFormValues() {
+        throw Error("I am not implemented yet");
+    }
 
-                element.appendChild(project);
-            });
-        }
-    }
     displayTodos(data) {
         const element = this.displayElements.getElement("#todos");
 
