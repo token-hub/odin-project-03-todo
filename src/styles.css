@@ -10,3 +10,7 @@ body {
 .project {
     background-color: green;
 }
+
+.hidden {
+    display: none;
+}

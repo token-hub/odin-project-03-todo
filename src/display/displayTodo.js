@@ -9,7 +9,15 @@ class DisplayTodo extends Display {
 
     #identifiers = {
         main: "#todos",
-        todoId: "#todo-form-input-id"
+        todoId: "#todo-form-input-id",
+        form: {
+            todoId: "#todo-form-input-id",
+            projectId: "#projectId",
+            title: "#title",
+            priority: "#priority",
+            dueDate: "#dueDate",
+            description: "#description"
+        }
     };
 
     #className = "todo";
@@ -39,11 +47,11 @@ class DisplayTodo extends Display {
                 todo.id = d.id;
                 todo.classList.add(this.getClassName);
                 todo.innerHTML = `
-                        <p class='todo-projectId'>${d.projectId}</p>
+                        <p class='todo-projectId hidden'>${d.projectId}</p>
                         <p class='todo-title'>${d.title}</p>
                         <p class='todo-dueDate'>${d.dueDate}</p>
                         <p class='todo-priority'>${d.priority}</p>
-                        <p class-'todo-description'>${d.description}</p>
+                        <p class='todo-description'>${d.description}</p>
                         <button type="edit" class='todo-edit-btn'>Edit</button>
                         <button type="button" class='todo-delete-btn'>Delete</button>
                         `;
@@ -51,6 +59,22 @@ class DisplayTodo extends Display {
                 element.appendChild(todo);
             });
         }
+    }
+
+    prepareEditForm(data) {
+        const projectId = this.displayElements.getElement(this.identifiers.form.projectId);
+        const todoId = this.displayElements.getElement(this.identifiers.form.todoId);
+        const title = this.displayElements.getElement(this.identifiers.form.title);
+        const priority = this.displayElements.getElement(this.identifiers.form.priority);
+        const dueDate = this.displayElements.getElement(this.identifiers.form.dueDate);
+        const description = this.displayElements.getElement(this.identifiers.form.description);
+
+        projectId.value = data.projectId;
+        title.value = data.title;
+        todoId.value = data.id;
+        priority.value = data.priority;
+        dueDate.value = data.dueDate;
+        description.value = data.description;
     }
 
     isEditFormActive() {

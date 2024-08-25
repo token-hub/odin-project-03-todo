@@ -35,6 +35,15 @@ class Main {
             entityModule: this.displayProject
         });
 
+        // todo edit buttons
+        this.displayListeners.addFormListeners({
+            selector: ".todo-edit-btn",
+            func: this.displayTodo.prepareEditForm,
+            objectToBind: this.displayTodo,
+            entityModule: this.displayTodo,
+            isEdit: true
+        });
+
         // todo delete buttons
         this.displayListeners.addFormListeners({
             selector: ".todo-delete-btn",
